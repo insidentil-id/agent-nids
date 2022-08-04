@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  filebeat:
+    user: root
+    container_name: filebeat
+    image: docker.elastic.co/beats/filebeat:8.3.2
+    command: filebeat -e -strict.perms=false
+    volumes:
+        - ./docker/filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+        - ./example/mylog:/usr/share/filebeat/mylog
+        - ./example/suricata:/usr/share/filebeat/suricata
+        - ./example/outputlog:/usr/share/filebeat/outputlog
+        - /var/lib/docker:/var/lib/docker:ro
+        - /var/run/docker.sock:/var/run/docker.sock
+        - /var/run/docker.sock:/host_docker/docker.sock
+        - /var/lib/docker:/host_docker/var/lib/docker
