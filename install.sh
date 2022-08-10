@@ -124,7 +124,7 @@ conf_filebeat(){
 	sed -i "s/KIBANA_USERNAME/$KIBANA_USERNAME/g" /etc/filebeat/filebeat.yml
 	sed -i "s/KIBANA_PASSWORD/$KIBANA_PASSWORD/g" /etc/filebeat/filebeat.yml
 	systemctl restart filebeat
-	echo "[Step 5] Berhasil Menginstall Filebeat"
+	echo "[Step 6] Berhasil Melakukan Konfigurasi Filebeat"
 	echo ""
 	echo ""
 }
