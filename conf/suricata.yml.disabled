@@ -1,0 +1,16 @@
+# Module: suricata
+# Docs: https://www.elastic.co/guide/en/beats/filebeat/8.3/filebeat-module-suricata.html
+
+- module: suricata
+  # All logs
+  eve:
+    enabled: true
+    var.paths: ["/var/log/suricata/eve.json"]
+    input:
+      fields_under_root: false
+      fields.app.type: "Surcata"
+      fields.site: 1
+      fields.debug: "yes"
+    # Set custom paths for the log files. If left empty,
+    # Filebeat will choose the paths depending on your OS.
+    #var.paths:
