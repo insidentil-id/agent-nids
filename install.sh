@@ -166,4 +166,4 @@ main(){
 	conf_filebeat
 }
 
-main()
+main
