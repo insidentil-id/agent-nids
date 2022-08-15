@@ -1,4 +1,10 @@
 #!/bin/bash
+# Script By Cyber Threat Hunting Team
+# Direktorat Operasi Keamanan Siber
+# Badan Siber dan Sandi Negara
+# Tahun 2022
+# Special Thanks to Team: maNDayUGIikHSanNaLonAldAvIDSUBkHAnREndRAalSItAdAFi
+
 set -euo pipefail
 check_root() {
 	echo "---Mengecek Sistem Root---"
@@ -13,9 +19,29 @@ check_root() {
 	echo ""
 }
 
+check_os(){
+    echo "---Mengecek Operating System---"
+    # Installing ELK Stack
+    if [ "$(grep -Ei 'debian|buntu|mint' /etc/*release)" ]
+        then
+            echo " It's a Debian based system"
+            echo "[Step 2] Checking OS Complete"
+            echo ""
+            echo ""
+    else
+        echo "This script doesn't support ELK installation on this OS."
+        exit 1
+    fi
+}
+
+
 check_update() {
+    echo "---Mengecek Update dan Variabel---"
 	sudo apt update
 	export $(cat .env | xargs)
+    echo "[Step 3] Checking Update and Variable Complete"
+    echo ""
+	echo ""
 }
 
 check_iface() {
@@ -23,7 +49,7 @@ check_iface() {
 	IfaceAll=$(ip --oneline link show up | grep -v "lo" | awk '{print $2}' | cut -d':' -f1 | cut -d'@' -f1)
 	CountIface=$(wc -l <<< "${IfaceAll}")
 	if [[ $CountIface -eq 1 ]]; then
-		echo "[Step 2] Selected interface: "$IfaceAll
+		echo "[Step 4] Selected interface: "$IfaceAll
 		LIFACE=$IfaceAll
 	else
 		echo "Terdapat Beberapa Interface yang tersedia, Mohon Pilih salah satu"
@@ -33,7 +59,7 @@ check_iface() {
 		done
 		echo "Silahkan ketik interface yang tersedia (contoh: eth0)"
 		read -p "Interface: " LIFACE
-		echo "[Step 2] Selected interface: "$LIFACE
+		echo "[Step 4] Selected interface: "$LIFACE
 	fi
 	echo ""
 	echo ""
@@ -55,7 +81,7 @@ install_suricata() {
 	# stop suricata
 	sudo systemctl stop suricata
 
-	echo "[Step 3] Berhasil menginstall Suricata"
+	echo "[Step 5] Berhasil menginstall Suricata"
 	echo ""
 	echo ""
 }
@@ -89,7 +115,7 @@ conf_suricata(){
 	sudo systemctl enable suricata
 	sudo systemctl start suricata
 	suricata -V
-	echo "[Step 4] Berhasil Melakukan Konfigurasi Suricata"
+	echo "[Step 6] Berhasil Melakukan Konfigurasi Suricata"
 	echo ""
 	echo ""
 }
@@ -99,7 +125,7 @@ install_filebeat(){
 	echo "---Melakukan Instalasi Filebeat---"
 	if [ -x "$(command -v filebeat)" ]; 
 	then
-		echo "[Step 5] Berhasil Menginstall Filebeat"
+		echo "[Step 7] Berhasil Menginstall Filebeat"
 	else
 		curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-${ELASTICSEARCH_VERSION}-amd64.deb
 		sudo dpkg -i filebeat-${ELASTICSEARCH_VERSION}-amd64.deb
@@ -124,15 +150,16 @@ conf_filebeat(){
 	sed -i "s/KIBANA_USERNAME/$KIBANA_USERNAME/g" /etc/filebeat/filebeat.yml
 	sed -i "s/KIBANA_PASSWORD/$KIBANA_PASSWORD/g" /etc/filebeat/filebeat.yml
 	systemctl restart filebeat
-	echo "[Step 6] Berhasil Melakukan Konfigurasi Filebeat"
+	echo "[Step 8] Berhasil Melakukan Konfigurasi Filebeat"
 	echo ""
 	echo ""
 }
 
 main(){
 	check_root
+    check_os
+    check_update
 	check_iface
-	check_update
 	install_suricata
 	conf_suricata
 	install_filebeat

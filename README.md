@@ -15,3 +15,8 @@ nano .env
 ## Running installer dan tunggu hingga selesai
 sudo su<br>
 ./install.sh
+
+## Credit
+Script By Cyber Threat Hunting Team<br>
+Direktorat Operasi Keamanan Siber<br>
+Special Thanks to Team: maNDayUGIikHSanNaLonAldAvIDSUBkHAnREndRAalSItAdAFi
