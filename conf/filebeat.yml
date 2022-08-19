@@ -102,9 +102,9 @@ setup.template.settings:
 # Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
 # This requires a Kibana endpoint configuration.
 setup.kibana:
-  host: KIBANA_HOST_PORT
-  username: KIBANA_USERNAME
-  password: KIBANA_PASSWORD
+  host: "KIBANA_HOST_PORT"
+  username: "KIBANA_USERNAME"
+  password: "KIBANA_PASSWORD"
 
 # setup.kibana:
   # Kibana Host
@@ -139,8 +139,9 @@ setup.kibana:
 output.elasticsearch:
   hosts: ["ELASTICSEARCH_HOST_PORT"]
   protocol: "https"
-  username: ELASTICSEARCH_USERNAME
-  password: ELASTICSEARCH_PASSWORD
+  username: "ELASTICSEARCH_USERNAME"
+  password: "ELASTICSEARCH_PASSWORD"
+  ssl.verification_mode : none
 
 #output.elasticsearch:
   # Array of hosts to connect to.
