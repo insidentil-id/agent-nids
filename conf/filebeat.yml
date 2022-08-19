@@ -141,7 +141,7 @@ output.elasticsearch:
   protocol: "https"
   username: "ELASTICSEARCH_USERNAME"
   password: "ELASTICSEARCH_PASSWORD"
-  ssl.verification_mode : none
+  ssl.verification_mode: none
 
 #output.elasticsearch:
   # Array of hosts to connect to.
