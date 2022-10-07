@@ -114,6 +114,8 @@ conf_suricata(){
 	sudo suricata-update -D /etc/suricata/ --no-merge
 	sudo systemctl enable suricata
 	sudo systemctl start suricata
+	sudo suricata-update list-sources
+	sudo suricata-update enable-source et/open
 	suricata -V
 	echo "[Step 6] Berhasil Melakukan Konfigurasi Suricata"
 	echo ""
@@ -150,6 +152,7 @@ conf_filebeat(){
 	sed -i "s/KIBANA_USERNAME/$KIBANA_USERNAME/g" /etc/filebeat/filebeat.yml
 	sed -i "s/KIBANA_PASSWORD/$KIBANA_PASSWORD/g" /etc/filebeat/filebeat.yml
 	systemctl restart filebeat
+	sudo filebeat setup
 	echo "[Step 8] Berhasil Melakukan Konfigurasi Filebeat"
 	echo ""
 	echo ""

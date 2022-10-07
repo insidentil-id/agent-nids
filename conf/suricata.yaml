@@ -74,15 +74,17 @@ outputs:
   # a line based alerts log similar to Snort's fast.log
   - fast:
       enabled: yes
-      filename: fast.log
+      filename: fast-%Y-%m-%d-%H:%M.log
       append: yes
+      rotate-interval: day
       #filetype: regular # 'regular', 'unix_stream' or 'unix_dgram'
 
   # Extensible Event Format (nicknamed EVE) event log in JSON format
   - eve-log:
       enabled: yes
       filetype: regular #regular|syslog|unix_dgram|unix_stream|redis
-      filename: eve.json
+      filename: eve-%Y-%m-%d-%H:%M.log
+      rotate-interval: day
       #prefix: "@cee: " # prefix to prepend to each log entry
       # the following are valid when type: syslog above
       #identity: "suricata"

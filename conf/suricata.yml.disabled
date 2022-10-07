@@ -5,7 +5,7 @@
   # All logs
   eve:
     enabled: true
-    var.paths: ["/var/log/suricata/eve.json"]
+    var.paths: ["/var/log/suricata/eve-2022-*.log"]
     input:
       fields_under_root: false
       fields.app.type: "Surcata"

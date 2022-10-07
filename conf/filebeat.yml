@@ -142,6 +142,7 @@ output.elasticsearch:
   username: "ELASTICSEARCH_USERNAME"
   password: "ELASTICSEARCH_PASSWORD"
   ssl.verification_mode: none
+  setup.ilm.enable: true
 
 #output.elasticsearch:
   # Array of hosts to connect to.
