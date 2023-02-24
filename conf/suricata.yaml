@@ -1746,6 +1746,7 @@ rule-files:
  - smb-events.rules
  - smtp-events.rules
  - stream-events.rules
+ - suricata.rules
  - tls-events.rules
  - tor.rules
               
