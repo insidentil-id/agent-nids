@@ -105,6 +105,8 @@ setup.kibana:
   host: "KIBANA_HOST_PORT"
   username: "KIBANA_USERNAME"
   password: "KIBANA_PASSWORD"
+  protocol: "https"
+  ssl.verification_mode: none
 
 # setup.kibana:
   # Kibana Host
