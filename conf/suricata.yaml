@@ -1681,7 +1681,7 @@ napatech:
 ## If this section is completely commented out move down to the "Advanced rule
 ## file configuration".
 ##
-default-rule-path: /var/lib/suricata/rules
+default-rule-path: /etc/suricata/rules
 rule-files:
  #- 3coresec.rules
  - suricata.rules
