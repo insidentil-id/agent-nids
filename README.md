@@ -1,3 +1,6 @@
+## NOTES
+Pastikan sudah menginstall agent-manager sebelum menginstall agent-nids<br>
+
 ## Pre-install
 sudo apt get update<br>
 sudo apt install git

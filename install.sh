@@ -92,7 +92,7 @@ conf_suricata(){
 	#sudo mv /etc/suricata/suricata.yaml /etc/suricata/suricata.yaml.bak
 	#sudo mv /var/lib/suricata/rules/suricata.rules /var/lib/suricata/rules/suricata.rules.bak
 	sudo cp conf/suricata.yaml /etc/suricata/
-	sudo cp conf/suricata.rules /etc/suricata/rules/suricata.rules
+	sudo cp conf/suricata.rules /etc/suricata/rules/
 	sed -i "s/CHANGE-IFACE/$LIFACE/g" /etc/suricata/suricata.yaml
 	# add support for cloud server type
 	PUBLIC=$(curl -s ifconfig.me)
