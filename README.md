@@ -7,9 +7,8 @@ sudo apt install git
 
 ## Clone Repository
 git clone https://github.com/insidentil-id/agent-nids<br>
-sudo chmod 777 -R agent-nids<br>
 cd agent-nids<br>
-chmod u+x install.sh
+chmod +x install.sh
 
 ## Change env File
 Ubah semua komponen pada env file, sesuaikan dengan aset yang dimiliki<br>
